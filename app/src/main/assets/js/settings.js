@@ -1,4 +1,4 @@
-// ===== Settings Module =====
+﻿// ===== Settings Module =====
 const Settings = {
   init() {
     this.loadSettings();
@@ -13,25 +13,26 @@ const Settings = {
     document.getElementById('setting-theme').value = App.config.theme || 'dark';
   },
   bindEvents() {
-    document.getElementById('setting-deepseek-key').addEventListener('change', (e) => {
+    document.getElementById('setting-deepseek-key').addEventListener('input', (e) => {
       App.saveConfig('deepseek_key', e.target.value);
     });
-    document.getElementById('setting-deepseek-url').addEventListener('change', (e) => {
+    document.getElementById('setting-deepseek-url').addEventListener('input', (e) => {
       App.saveConfig('deepseek_url', e.target.value);
     });
-    document.getElementById('setting-deepseek-model').addEventListener('change', (e) => {
+    document.getElementById('setting-deepseek-model').addEventListener('input', (e) => {
       App.saveConfig('deepseek_model', e.target.value);
     });
-    document.getElementById('setting-mcp-host').addEventListener('change', (e) => {
+    document.getElementById('setting-mcp-host').addEventListener('input', (e) => {
       App.saveConfig('mcp_host', e.target.value);
     });
-    document.getElementById('setting-mcp-reconnect').addEventListener('change', (e) => {
+    document.getElementById('setting-mcp-reconnect').addEventListener('input', (e) => {
       App.saveConfig('mcp_reconnect', e.target.checked ? 'true' : 'false');
     });
-    document.getElementById('setting-theme').addEventListener('change', (e) => {
+    document.getElementById('setting-theme').addEventListener('input', (e) => {
       App.saveConfig('theme', e.target.value);
       App.applyTheme();
     });
   }
 };
 document.addEventListener('DOMContentLoaded', () => Settings.init());
+
