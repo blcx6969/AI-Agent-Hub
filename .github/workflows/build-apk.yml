@@ -28,20 +28,14 @@ jobs:
         with:
           gradle-version: 8.5
 
-      - name: Build Debug APK (signed)
-        run: gradle assembleDebug
+      - name: Build APK
+        run: gradle assembleRelease
 
-      - name: Delete old release
-        run: |
-          gh release delete v1.1.0 --yes || true
-          git tag -d v1.1.0 || true
-          git push origin :refs/tags/v1.1.0 || true
-        env:
-          GH_TOKEN: ${{ github.token }}
-
-      - name: Create Release and upload APK
-        run: |
-          cp app/build/outputs/apk/debug/*.apk ????AI???.apk
-          gh release create v1.1.0 ????AI???.apk --title "????AI v1.1" --notes "???????????????"
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Upload APK to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.1.0
+          name: ????AI v1.1
+          body: ???????????????
+          files: app/build/outputs/apk/release/*.apk
+          generate_release_notes: false
