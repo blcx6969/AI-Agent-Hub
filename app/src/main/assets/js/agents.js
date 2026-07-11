@@ -1,7 +1,7 @@
 // ===== Agents Module (CellClaw & Tasker) =====
 const Agents = {
   init() {
-    document.querySelectorAll('.agent-header').forEach(h => {
+    document.querySelectorAll('.agent-card .head').forEach(h => {
       h.addEventListener('click', () => {
         const config = h.nextElementSibling;
         if (config) config.style.display = config.style.display === 'none' ? 'flex' : 'none';
@@ -17,13 +17,13 @@ const Agents = {
     document.getElementById('cellclaw-url').addEventListener('change', (e) => App.saveConfig('cellclaw_url', e.target.value));
     document.getElementById('cellclaw-key').addEventListener('change', (e) => App.saveConfig('cellclaw_key', e.target.value));
     document.getElementById('tasker-url').addEventListener('change', (e) => App.saveConfig('tasker_url', e.target.value));
-    document.querySelector('.test-btn[data-agent="cellclaw"]').addEventListener('click', () => this.testCellClaw());
+    document.querySelector('.btn-primary[data-agent="cellclaw"]').addEventListener('click', () => this.testCellClaw());
     document.getElementById('cellclaw-commands').addEventListener('change', (e) => {
       if (e.target.value) this.sendCellClawCommand(e.target.value);
       e.target.value = '';
     });
     document.querySelector('.add-workflow')?.addEventListener('click', () => this.addWorkflow());
-    document.querySelector('.save-workflows')?.addEventListener('click', () => this.saveWorkflows());
+    document.querySelector('.btn-full')?.addEventListener('click', () => this.saveWorkflows());
     this.loadConfig();
   },
   loadConfig() {
