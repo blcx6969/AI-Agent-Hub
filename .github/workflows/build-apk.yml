@@ -32,10 +32,8 @@ jobs:
         run: gradle assembleRelease
 
       - name: Upload APK to Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v1.1.0
-          name: ????AI v1.1
-          body: ???????????????
-          files: app/build/outputs/apk/release/*.apk
-          generate_release_notes: false
+        run: |
+          gh release upload v1.1.0 app/build/outputs/apk/release/*.apk --clobber || \
+          gh release create v1.1.0 app/build/outputs/apk/release/*.apk --title "????AI v1.1" --notes ""
+        env:
+          GH_TOKEN: ${{ github.token }}
