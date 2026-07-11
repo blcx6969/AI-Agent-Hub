@@ -9,10 +9,9 @@ const App = {
     taskerUrl: localStorage.getItem('tasker_url') || '',
     mcpHost: localStorage.getItem('mcp_host') || 'ws://localhost:8080/mcp',
     mcpReconnect: localStorage.getItem('mcp_reconnect') !== 'false',
-    theme: localStorage.getItem('theme') || 'dark'
+    theme: localStorage.getItem('theme') || 'light'
   },
   init() {
-    document.body.className = this.config.theme;
     this.applyTheme();
     this.setupNavigation();
     this.setupStatusButton();
@@ -23,8 +22,7 @@ const App = {
   },
   applyTheme() {
     const t = this.config.theme;
-    document.body.className = t === 'auto' ? '' : t;
-    document.querySelector('meta[name=theme-color]').content = t === 'light' ? '#f5f5f7' : '#1c1c1e';
+    document.documentElement.className = t === 'auto' ? 'auto' : (t === 'light' ? 'light' : '');
   },
   setupNavigation() {
     const navItems = document.querySelectorAll('.nav-item');
@@ -103,3 +101,4 @@ function toast(msg, duration) {
 }
 document.addEventListener('DOMContentLoaded', () => App.init());
 Object.assign(window, { App, toast });
+
