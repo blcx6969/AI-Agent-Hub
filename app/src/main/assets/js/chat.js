@@ -34,7 +34,7 @@ const Chat = {
     const div = document.createElement('div');
     div.className = 'message ai';
     div.id = 'typing-indicator';
-    div.innerHTML = '<div class="avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>';
+    div.innerHTML = '<div class="avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>';
     container.appendChild(div);
     container.scrollTop = container.scrollHeight;
   },
