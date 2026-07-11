@@ -6,6 +6,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./android
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
@@ -18,23 +21,19 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
       - name: Build Debug APK
-        run: |
-          cd android
-          chmod +x gradlew
-          ./gradlew assembleDebug
+        run: gradle assembleDebug
       - name: Rename APK
-        run: |
-          cp android/app/build/outputs/apk/debug/*.apk 菠萝吹雪AI.apk
-      - name: Upload APK
+        run: cp app/build/outputs/apk/debug/*.apk 菠萝吹雪AI.apk
+      - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
           name: 菠萝吹雪AI-APK
-          path: 菠萝吹雪AI.apk
+          path: android/菠萝吹雪AI.apk
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.2.0
           name: 菠萝吹雪AI v1.2
-          files: 菠萝吹雪AI.apk
+          files: android/菠萝吹雪AI.apk
           generate_release_notes: true
           make_latest: true
