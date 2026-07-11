@@ -1,4 +1,4 @@
-// ===== AI Agent Hub - Core App =====
+﻿// ===== AI Agent Hub - Core App =====
 const App = {
   config: {
     deepseekKey: localStorage.getItem('deepseek_key') || '',
@@ -9,7 +9,7 @@ const App = {
     taskerUrl: localStorage.getItem('tasker_url') || '',
     mcpHost: localStorage.getItem('mcp_host') || 'ws://localhost:8080/mcp',
     mcpReconnect: localStorage.getItem('mcp_reconnect') !== 'false',
-    theme: localStorage.getItem('theme') || 'dark'
+    theme: localStorage.getItem('theme') || 'light'
   },
   init() {
     this.applyTheme();
@@ -101,3 +101,4 @@ function toast(msg, duration) {
 }
 document.addEventListener('DOMContentLoaded', () => App.init());
 Object.assign(window, { App, toast });
+
